@@ -95,16 +95,18 @@ Compile-time parameters:
 
 ```cmake
 
+project(application
+        LANGUAGES C ASM
+        DESCRIPTION "consumer application")
+
 include(FetchContent)
 
 # -------------------------------------------------
 # Security configuration (PUBLIC CACHE API)
 # -------------------------------------------------
-set(SECURITY_CONFIG_HASH_SIZE 32 CACHE STRING
-    "Hash output size used by security subsystem")
 
-set(SECURITY_CONFIG_NONCE_SIZE 16 CACHE STRING
-    "Nonce size used by security subsystem")
+set(SECURITY_CONFIG_NONCE_SIZE 16 CACHE STRING "Nonce size used by security subsystem")
+set(SECURITY_CONFIG_HASH_SIZE 32 CACHE STRING "Hash output size used by security subsystem")
 
 # -------------------------------------------------
 # Fetch security guardian
@@ -116,6 +118,13 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(rpv_security_guardian)
+
+add_executable(${PROJECT_NAME} main.c)
+
+target_include_directories(${PROJECT_NAME} ./include)
+
+# rpv_security_guardian exposes 'security-guardian' object library target
+target_link_libraries(${PROJECT_NAME} security-guardian)
 
 ```
 
