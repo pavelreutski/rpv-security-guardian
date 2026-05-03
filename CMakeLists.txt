@@ -22,7 +22,7 @@ file(GLOB SECURITY_C_SOURCES CONFIGURE_DEPENDS ./src/*.c)
 
 # config generation
 
-config_file(./config/sec_conf.h ${SECURITY_AUTOGEN_DIRECTORY}/sec_conf.h)
+configure_file(./config/sec_conf.h.in ${SECURITY_AUTOGEN_DIRECTORY}/sec_conf.h)
 
 # object library
 
@@ -31,4 +31,5 @@ add_library(rpv-security-guardian OBJECT)
 target_compile_features(rpv-security-guardian PRIVATE c_std_23)
 target_sources(rpv-security-guardian PRIVATE ${SECURITY_C_SOURCES})
 
-target_include_directories(rpv-security-guardian INTERFACE ./include)
+target_include_directories(rpv-security-guardian INTERFACE ./include
+                                                           ${SECURITY_AUTOGEN_DIRECTORY})

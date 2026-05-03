@@ -115,7 +115,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(rpv_security_guardian)
 
-### Clone Repository
+### Clone repository
 
 ```bash
 git clone git@github.com:pavelreutski/rpv-security-guardian.git
