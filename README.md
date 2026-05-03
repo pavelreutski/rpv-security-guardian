@@ -82,16 +82,17 @@ Compile-time parameters:
 
 ```c
 
-/* default values when cmake properties are not provided 
+/* 
+ * Default values when SECURITY_CONFIG_HASH_SIZE and SECURITY_CONFIG_NONCE_SIZE cmake properties are not provided 
  * before FetchContent_Declare(..) and FetchContent_MakeAvailable(...) 
  */
 
-#define SEC_HASH_SIZE   32 // default value if cmake property not provided
-#define SEC_NONCE_SIZE  16 // default value if cmake property
+#define SEC_HASH_SIZE   32 // SECURITY_CONFIG_HASH_SIZE
+#define SEC_NONCE_SIZE  16 // SECURITY_CONFIG_NONCE_SIZE
 
 ```
 
-## CMake frendly integration
+## CMake friendly integration
 
 ```cmake
 
@@ -112,23 +113,23 @@ set(SECURITY_CONFIG_HASH_SIZE 32 CACHE STRING "Hash output size used by security
 # Fetch security guardian
 # -------------------------------------------------
 FetchContent_Declare(
-    rpv_security_guardian
+    sec_guardian
     GIT_REPOSITORY git@github.com:pavelreutski/rpv-security-guardian.git
     GIT_TAG master
 )
 
-FetchContent_MakeAvailable(rpv_security_guardian)
+FetchContent_MakeAvailable(sec_guardian)
 
 add_executable(${PROJECT_NAME} main.c)
 
 target_include_directories(${PROJECT_NAME} ./include)
 
-# rpv_security_guardian exposes 'security-guardian' object library target
+# sec_guardian exposes 'security-guardian' object library target
 target_link_libraries(${PROJECT_NAME} security-guardian)
 
 ```
 
-### Clone repository
+## Clone repository
 
 ```bash
 git clone git@github.com:pavelreutski/rpv-security-guardian.git
