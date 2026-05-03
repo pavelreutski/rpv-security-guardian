@@ -83,8 +83,8 @@ Compile-time parameters:
 ```c
 
 /* 
- * Default values when SECURITY_CONFIG_HASH_SIZE and SECURITY_CONFIG_NONCE_SIZE cmake properties are not provided 
- * before FetchContent_Declare(..) and FetchContent_MakeAvailable(...) 
+ * Default values when SECURITY_CONFIG_HASH_SIZE and SECURITY_CONFIG_NONCE_SIZE 
+ * cmake properties are not provided before FetchContent_Declare(..) and FetchContent_MakeAvailable(...) 
  */
 
 #define SEC_HASH_SIZE   32 // SECURITY_CONFIG_HASH_SIZE
