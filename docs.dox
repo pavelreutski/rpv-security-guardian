@@ -1,0 +1,109 @@
+/**
+@mainpage RPV Security Guardian Documentation
+
+@section intro Introduction
+
+RPV Security Guardian is a modular security framework designed to protect
+Remotely Piloted Vehicles (RPVs) and associated systems against threats such as:
+
+- Unauthorized access
+- Data tampering
+- Communication interception
+- Runtime anomalies
+
+The system focuses on **real-time monitoring**, **threat detection**, and
+**defensive response mechanisms**.
+
+---
+
+@section architecture Architecture Overview
+
+The project is structured into several key components:
+
+@subsection core Core Layer
+Handles:
+- System initialization
+- Configuration
+- Lifecycle management
+
+@subsection security Security Modules
+Responsible for:
+- Authentication & authorization
+- Encryption / decryption
+- Integrity checks
+
+@subsection monitoring Monitoring & Detection
+Provides:
+- Telemetry analysis
+- Anomaly detection
+- Event logging
+
+@subsection communication Communication Layer
+Manages:
+- Secure channels
+- Protocol validation
+- Packet inspection
+
+---
+
+@section features Key Features
+
+- Modular and extensible design
+- Real-time threat detection
+- Secure communication pipeline
+- Lightweight footprint for embedded systems
+- Easy integration with existing RPV stacks
+
+---
+
+@section usage Usage
+
+1. Build the project:
+@code
+mkdir build && cd build
+cmake ..
+make
+@endcode
+
+2. Run:
+@code
+./rpv_guardian
+@endcode
+
+---
+
+@section docs Documentation Guide
+
+- @ref modules "Modules"
+- @ref classes "Classes"
+- @ref files "Files"
+
+---
+
+@section security Security Considerations
+
+This project enforces:
+- Least privilege access
+- Input validation
+- Secure defaults
+
+Ensure:
+- Keys are stored securely
+- Debug logs are disabled in production
+- Communication channels are encrypted
+
+---
+
+@section future Future Work
+
+- AI-based anomaly detection
+- Integration with external SIEM systems
+- Hardware-backed security modules
+
+---
+
+@section author Author
+
+Project maintained by contributors of RPV Security Guardian.
+
+*/
