@@ -10,6 +10,12 @@ Instead, the framework relies on **user-provided callback implementations** that
 
 ---
 
+## Documentation (Doxygen style)
+
+[Security Guardian pages](https://pavelreutski.github.io/rpv-security-guardian/)
+
+---
+
 ## Core Concept
 
 The system operates as a **memory region guardian**, providing:
