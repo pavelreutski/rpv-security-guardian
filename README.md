@@ -87,7 +87,9 @@ Compile-time parameters:
  */
 
 #define SEC_HASH_SIZE   32 // default value if cmake property not provided
-#define SEC_NONCE_SIZE  16 // default value if cmake property 
+#define SEC_NONCE_SIZE  16 // default value if cmake property
+
+```
 
 ## CMake frendly integration
 
@@ -114,6 +116,8 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(rpv_security_guardian)
+
+```
 
 ### Clone repository
 
