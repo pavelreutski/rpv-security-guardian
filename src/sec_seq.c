@@ -1,4 +1,4 @@
-#include "security/sec_seq.h"
+#include "sec_seq.h"
 
 #define LCG_M                  (12345u)
 #define LCG_K                  (1103515245u)

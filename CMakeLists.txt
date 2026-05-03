@@ -31,5 +31,5 @@ add_library(rpv-security-guardian OBJECT)
 target_compile_features(rpv-security-guardian PRIVATE c_std_23)
 target_sources(rpv-security-guardian PRIVATE ${SECURITY_C_SOURCES})
 
-target_include_directories(rpv-security-guardian INTERFACE ./include
+target_include_directories(rpv-security-guardian PUBLIC ./include
                                                            ${SECURITY_AUTOGEN_DIRECTORY})

@@ -1,12 +1,12 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "security/sec_rt.h"
+#include "sec_rt.h"
 
-#include "security/sec_act.h"
-#include "security/sec_storage.h"
+#include "sec_act.h"
+#include "sec_storage.h"
 
-#include "security/sec_conf.h"
+#include "sec_conf.h"
 
 #define SEC_SEQ_SIZE                  ((SEC_HASH_SIZE << 1) + SEC_NONCE_SIZE)
 
