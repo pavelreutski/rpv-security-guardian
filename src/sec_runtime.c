@@ -74,8 +74,9 @@ void _sec_runtime(void) {
 
             sec_reg = SEC_RUNTIME;            
 
-            uint8_t proof[SEC_HASH_SIZE]; // caller proof of a secure region sequence
-            if (!_sec_verify(proof, protected, sizeof(proof))) {
+            uint8_t s_buffer[SEC_HASH_SIZE]; // general purpose buffer
+
+            if (!_sec_verify(s_buffer, protected, sizeof(s_buffer))) { // should give a proof of a secure region sequence
 
                 sec_reg = SEC_RECOVERY;
                 _sec_runtime();
@@ -89,15 +90,13 @@ void _sec_runtime(void) {
 
             memcpy(art.nonce, nonce, sizeof(nonce));
 
-            _sec_hash(proof, sizeof(proof), art.proof, sizeof(art.proof)); // S_0 = hash(proof) -> S_static                        
+            _sec_hash(s_buffer, sizeof(s_buffer), art.proof, sizeof(art.proof)); // S_0 = hash(proof) -> S_static                        
             _sec_hash(protected, protected_size, art.protec_hash, sizeof(art.protec_hash)); // hash(code)            
             
             _sec_storewrite(S_STC_UID, art.proof, sizeof(art.proof)); // S_0 = hash(proof) -> S_static
-
-            uint8_t hash[SEC_HASH_SIZE];
-            _sec_hash(art.seq, sizeof(art.seq), hash, sizeof(hash));
             
-            _sec_storewrite(S_DYNC_UID, hash, sizeof(hash)); // S_1 = hash(S_static || hash(code) || nonce) -> S_epoch_dynamic
+            _sec_hash(art.seq, sizeof(art.seq), s_buffer, sizeof(s_buffer));
+            _sec_storewrite(S_DYNC_UID, s_buffer, sizeof(s_buffer)); // S_1 = hash(S_static || hash(code) || nonce) -> S_epoch_dynamic
 
         } break;
 
@@ -114,9 +113,6 @@ void _sec_runtime(void) {
 
             _sec_storeread(S_STC_UID, art.proof, sizeof(art.proof)); // S_0 = hash(proof) -> S_static
             _sec_hash(protected, protected_size, art.protec_hash, sizeof(art.protec_hash)); // hash(code)
-
-            uint8_t hash[SEC_HASH_SIZE];
-            _sec_hash(protected, protected_size, hash, sizeof(hash));
 
             uint8_t s_dynamic[SEC_HASH_SIZE];
             _sec_hash(art.seq, sizeof(art.seq), s_dynamic, sizeof(s_dynamic)); // S_dynamic = hash(S_static || hash(code) || nonce)
